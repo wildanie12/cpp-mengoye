@@ -21,23 +21,30 @@ struct Question
     string choiceC;
     string choiceD;
     char correctAnswer;
+    char answer;
 };
 
 int main()
 {
-    cout << "Dadu dimainkan:";
-    cout << rollDie() << endl;
+    // cout << "Dadu dimainkan:";
+    // cout << rollDie() << endl;
     string soal[5] = {
         "Ini soal pertama.. jawab hayo?\n a.) Anu \n b.) oye \n c.) ngok",
         "Ini soal kedua.. jawab hayo?",
         "Ini soal ketiga.. jawab hayo?",
     };
 
-    string input[5] = {};
-
     Question questions[] = {
         {
-            question : "2. Typical Range ( -2,147,483,648 to +2,147,483,647) digunakan pada tipe data?",
+            question : "1. Apa output dari kode C++ berikut:\nint arr[5] = {1, 2, 3, 4, 5};\nint *ptr = arr + 2;\ncout << *(ptr + 1);",
+            choiceA : "2",
+            choiceB : "3",
+            choiceC : "4",
+            choiceD : "5",
+            correctAnswer : 'b',
+        },
+        {
+            question : "3. Typical Range ( -2,147,483,648 to +2,147,483,647) digunakan pada tipe data?",
             choiceA : "Short int dan int",
             choiceB : "unsigned short int dan long int",
             choiceC : "Int dan long int",
@@ -45,30 +52,23 @@ int main()
             correctAnswer : 'c',
         },
         {
-            question : "if(data[i] >= count){  simbol Flowchart yang di gunakan pada kode pemograman tersebut adalah? ",
+            question : "2. if(data[i] >= count){  simbol Flowchart yang di gunakan pada kode pemograman tersebut adalah? ",
             choiceA : "Decision",
             choiceB : "Process",
             choiceC : "Input/output",
             choiceD : "Display",
             correctAnswer : 'a'
         },
-        {
-            question : "Apa output dari kode C++ berikut:\nint arr[5] = {1, 2, 3, 4, 5};\nint *ptr = arr + 2;\ncout << *(ptr + 1);",
-            choiceA : "2",
-            choiceB : "3",
-            choiceC : "4",
-            choiceD : "5",
-            correctAnswer : 'b',
-        },
+
     };
 
     for (int i = 0; i < 5; i++)
     {
-        cout << soal[i] << i << endl;
+        cout << questions[i].question << i << endl;
         cout << "Tuliskan jawabannya: ";
-        cin >> input[i];
+        cin >> questions[i].answer;
 
-        if (input[i] == "a")
+        if (questions[i].answer == questions[i].correctAnswer)
         {
             // ini bener
             cout << "Mantap mang, lanjut\n";
