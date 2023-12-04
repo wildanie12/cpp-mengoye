@@ -1,2 +1,3 @@
+#include <ctime>
 
-    srand(time(NULL));
+srand(time(nullptr));
