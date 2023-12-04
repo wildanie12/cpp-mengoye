@@ -15,7 +15,7 @@ int rollDie()
 
 struct Question
 {
-    string question;
+    string question; // field
     string choiceA;
     string choiceB;
     string choiceC;
@@ -28,12 +28,6 @@ int main()
 {
     // cout << "Dadu dimainkan:";
     // cout << rollDie() << endl;
-    string soal[5] = {
-        "Ini soal pertama.. jawab hayo?\n a.) Anu \n b.) oye \n c.) ngok",
-        "Ini soal kedua.. jawab hayo?",
-        "Ini soal ketiga.. jawab hayo?",
-    };
-
     Question questions[] = {
         {
             question : "1. Apa output dari kode C++ berikut:\nint arr[5] = {1, 2, 3, 4, 5};\nint *ptr = arr + 2;\ncout << *(ptr + 1);",
@@ -59,18 +53,27 @@ int main()
             choiceD : "Display",
             correctAnswer : 'a'
         },
-
     };
 
     for (int i = 0; i < 5; i++)
     {
-        cout << questions[i].question << i << endl;
+        cout << "------------------------" << endl;
+        // nampipin soalnya
+        cout << questions[i].question << endl;
+
+        // nampilin item jawabannya
+        cout << "A." << questions[i].choiceA << endl;
+        cout << "B." << questions[i].choiceB << endl;
+        cout << "C." << questions[i].choiceC << endl;
+        cout << "D." << questions[i].choiceD << endl;
+
+        // minta input jawaban lalu taruh di field answer.
         cout << "Tuliskan jawabannya: ";
         cin >> questions[i].answer;
 
         if (questions[i].answer == questions[i].correctAnswer)
         {
-            // ini bener
+            // ini jika bener
             cout << "Mantap mang, lanjut\n";
         }
         else
@@ -79,6 +82,10 @@ int main()
             cout << "Jawaban salah anjir\n";
             i = i - 1;
         }
+
+        string daduConfirm;
+        cout << "Kocok dadu dulu [press enter]" << endl;
+        cin >> daduConfirm;
 
         if (i > 0)
         {
