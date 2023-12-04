@@ -16,6 +16,7 @@ struct Question
 
 int main()
 {
+    // menyiapkan list pertanyaan di array of struct.
     Question questions[] = {
         {
             question : "1. Apa output dari kode C++ berikut:\nint arr[5] = {1, 2, 3, 4, 5};\nint *ptr = arr + 2;\ncout << *(ptr + 1);",
@@ -43,7 +44,8 @@ int main()
         },
     };
 
-    for (int i = 0; i < 5; i++)
+    // melakukan perulangan sampai jumlah soalnya
+    for (int i = 0; i < 2; i++)
     {
         cout << "------------------------" << endl;
         // nampipin soalnya
