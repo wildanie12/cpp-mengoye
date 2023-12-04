@@ -16,6 +16,8 @@ struct Question
 
 int main()
 {
+    srand(time(NULL));
+
     // menyiapkan list pertanyaan di array of struct.
     Question questions[] = {
         {
@@ -45,7 +47,7 @@ int main()
     };
 
     // melakukan perulangan sampai jumlah soalnya
-    for (int i = 0; i < 2; i++)
+    for (int i = 0; i < 3; i++)
     {
         cout << "------------------------" << endl;
         // nampipin soalnya
@@ -77,7 +79,6 @@ int main()
             cin >> daduConfirm;
 
             // proses pelemparan dadu (mengambil nomor random dari 1 - 6)
-            srand(time(NULL));
             int hasilDadu = rand() % 6 + 1; // Get a number 1 to 6
             cout << "Hasil Dadu:" << hasilDadu << endl;
 
