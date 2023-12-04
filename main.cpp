@@ -2,17 +2,6 @@
 
 using namespace std;
 
-int rollDie()
-{
-    int roll;
-    int min = 1; // the min number a die can roll is 1
-    int max = 6; // this->dieSize; // the max value is the die size
-
-    roll = rand() % (max - min + 1) + min;
-
-    return roll;
-}
-
 struct Question
 {
     string question; // field
@@ -26,8 +15,6 @@ struct Question
 
 int main()
 {
-    // cout << "Dadu dimainkan:";
-    // cout << rollDie() << endl;
     Question questions[] = {
         {
             question : "1. Apa output dari kode C++ berikut:\nint arr[5] = {1, 2, 3, 4, 5};\nint *ptr = arr + 2;\ncout << *(ptr + 1);",
@@ -84,7 +71,7 @@ int main()
         }
 
         string daduConfirm;
-        cout << "Kocok dadu dulu [press enter]" << endl;
+        cout << "Kocok dadu dulu [ketik `y`]" << endl;
         cin >> daduConfirm;
 
         if (i > 0)
