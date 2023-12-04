@@ -42,7 +42,7 @@ int main()
             choiceB : "unsigned short int dan long int",
             choiceC : "Int dan long int",
             choiceD : "Long int dna short int",
-            correctAnswer : 'b',
+            correctAnswer : 'c',
         },
         {
             question : "if(data[i] >= count){  simbol Flowchart yang di gunakan pada kode pemograman tersebut adalah? ",
