@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
 
@@ -67,21 +68,27 @@ int main()
         {
             // balik ke soal ini (satu langkah)
             cout << "Jawaban salah anjir\n";
-            i = i - 1;
-        }
 
-        string daduConfirm;
-        cout << "Kocok dadu dulu [ketik `y`]" << endl;
-        cin >> daduConfirm;
+            // lempar dadu dulu
+            string daduConfirm;
+            cout << "Kocok dadu dulu [ketik `y` lalu enter]: ";
+            cin >> daduConfirm;
 
-        if (i > 0)
-        {
-            cout << " mo balik?";
-            string balik;
-            cin >> balik;
-            if (balik == "y" && i > 0)
+            // proses pelemparan dadu (mengambil nomor random dari 1 - 6)
+            srand(time(NULL));
+            int hasilDadu = rand() % 6 + 1; // Get a number 1 to 6
+            cout << "Hasil Dadu:" << hasilDadu << endl;
+
+            if (hasilDadu % 2 == 0)
             {
-                // balik ke soal sebelumnya (dua langkah)
+                // hasil dadu genap, maka kembali ke soal yg ini
+                cout << "Hasil dadu genap, kerjakan soal ini lagi" << endl;
+                i = i - 1;
+            }
+            else
+            {
+                // hasil dadu ganjil, maka kembali ke soal yg sebelumnya
+                cout << "Hasil dadu ganjil, silahkan kembali ke soal sebelumnya" << endl;
                 i = i - 2;
             }
         }
