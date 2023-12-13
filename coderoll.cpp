@@ -177,9 +177,8 @@ int main()
             cout << "Jawaban lu salah anjir hyung\n";
 
             // lempar dadu dulu
-            string daduConfirm;
-            cout << "Kocok dadu dulu [ketik `y` lalu enter]: ";
-            cin >> daduConfirm;
+            cout << "Kocok dadu dulu [tekan enter]: ";
+            getch();
 
             // proses pelemparan dadu (mengambil nomor random dari 1 - 6)
             int hasilDadu = rand() % 6 + 1; // Get a number 1 to 6
@@ -197,6 +196,8 @@ int main()
                 cout << "Hasil dadu ganjil, silahkan kembali ke soal sebelumnya" << endl;
                 i = i - 2;
             }
+            cout << "Tekan enter untuk melanjutkan [enter]: ";
+            getch();
         }
         system("cls");
     }
