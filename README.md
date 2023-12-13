@@ -3,6 +3,5 @@
 you can compile this code by using `g++` with:
 
 ```sh
-g++ g++ file.cpp -o program_name
+g++ g++ coderoll.cpp -o coderoll
 ```
-
