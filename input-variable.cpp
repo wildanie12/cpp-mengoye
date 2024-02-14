@@ -4,6 +4,13 @@ using namespace std;
 
 int main()
 {
+    // sample input: 
+    // 4
+    // 5 7 1 2
+
+    // sample output"
+    // 2 1 7 5
+
     // deklarasi variable dulu
     int a;
     long int b;
