@@ -46,7 +46,7 @@ stack<string> convertToPostFix(string input)
     stack<string> stackHasil;
 
     string operand = "";
-    string kurungOps = "";
+    stack<string> stackKurung;
     bool kurungAktif = false;
     for (int i = 0; i < static_cast<int>(input.length()); i++)
     {
@@ -76,7 +76,7 @@ stack<string> convertToPostFix(string input)
             // Handle Kurung
             // ------------------
 
-            // kalau ada kurung buka, kita catet operatornya di `kurungOps`
+            // kalau ada kurung buka, kita catet operatornya di stackKurung
             if (op == "(")
             {
                 kurungAktif = true;
@@ -86,7 +86,27 @@ stack<string> convertToPostFix(string input)
             // ini proses nyatet operator didalam kurung
             if (kurungAktif && op != "(" && op != ")")
             {
-                kurungOps = kurungOps + op;
+                string lastOp = "";
+                if (!stackKurung.empty())
+                {
+                    lastOp = stackKurung.top();
+                }
+                // selagi di stack kurung masih ada operator yg lebih kuat
+                // keluarin semuanya dari situ dipindah ke stack hasil
+                while (!isOperatorStronger(op, lastOp))
+                {
+                    if (!stackKurung.empty())
+                    {
+                        stackKurung.pop();
+                    }
+                    stackHasil.push(lastOp);
+                    lastOp = "";
+                    if (!stackKurung.empty())
+                    {
+                        lastOp = stackKurung.top();
+                    }
+                }
+                stackKurung.push(op);
                 continue;
             }
 
@@ -95,11 +115,11 @@ stack<string> convertToPostFix(string input)
             if (op == ")")
             {
                 kurungAktif = false;
-                for (int j = 0; j < static_cast<int>(kurungOps.length()); j++)
+                while (!stackKurung.empty())
                 {
-                    stackHasil.push(string(1, kurungOps[j]));
+                    stackHasil.push(stackKurung.top());
+                    stackKurung.pop();
                 }
-                kurungOps = "";
                 continue;
             }
 
@@ -117,7 +137,7 @@ stack<string> convertToPostFix(string input)
                 lastOp = stackTemp.top();
             }
 
-            // selagi di stack sementara masih ada operator yg sama atau lebih lemah
+            // selagi di stack sementara masih ada operator yang lebih kuat
             // keluarin semuanya dari situ dipindah ke stack hasil
             while (!isOperatorStronger(op, lastOp))
             {
@@ -211,6 +231,7 @@ int main()
     // ------------------------------------------------
     // menerima input (infix)
     // sample: 12*5+7-(23+2)/5-4
+    // sample: 12*5+(25-2*10)/5-(2/2+1) = 59
     // ------------------------------------------------
     string input;
     cin >> input;
@@ -219,10 +240,11 @@ int main()
     // step 1: Konversi dari inputan (infix) ke postfix
     // ------------------------------------------------
     stack<string> postFix = convertToPostFix(input);
-    cout << "postfix: " << endl;
-    displayStack(postFix);
+    // cout << "postfix: " << endl;
+    // displayStack(postFix);
 
     int num = calculatePostFix(postFix);
-    cout << "hasil: " << num;
+    // cout << "hasil: " << num;
+    cout << num;
     return 0;
 }
